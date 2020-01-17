@@ -10,3 +10,5 @@ This will list buckets:
     '''python webotron.py list-buckets'''
 Objects of a bucket can be listed by:
     '''python webotron.py list-bucket-objects <bucket_name>'''
+This will create a new bucket:
+    '''python webotron.py lsetup-bucket <bucket_name>'''
