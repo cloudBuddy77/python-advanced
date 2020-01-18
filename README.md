@@ -11,4 +11,6 @@ This will list buckets:
 Objects of a bucket can be listed by:
     '''python webotron.py list-bucket-objects <bucket_name>'''
 This will create a new bucket:
-    '''python webotron.py lsetup-bucket <bucket_name>'''
+    '''python webotron.py setup-bucket <bucket_name>'''
+This will sync a local directory to S3 bucket:
+    '''python webotron.py sync <pathname> <bucket_name>'''
