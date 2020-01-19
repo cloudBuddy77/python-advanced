@@ -1,34 +1,47 @@
-import boto3
-import click
-from botocore.exceptions import ClientError
+#!/usr/bin/python
+# -*- coding : utf-8 -*-
+""" Webotron will deploy a static website to AWS S3
+Webotron automates deployment of static websites:
+-Configure S3 buckets
+    -Create them.
+    - Set them up for static website hosting.
+    -Deploy local files to them
+-Configure DNS with AWS Route53
+-Configure a cloud delivery network and use SSL with AWS Cloudfront.
+"""
+
 from pathlib import Path
 import mimetypes
+
+import boto3
+from botocore.exceptions import ClientError
+import click
 
 session=boto3.Session(profile_name="shotty")
 s3=session.resource('s3')
 
 @click.group()
 def cli():
-    "Webotron deploys websites to AWS"
+    """Webotron deploys websites to AWS"""
     pass
 
 @cli.command('list-buckets')
 def list_buckets():
-    "List all s3 buckets"
+    """List all s3 buckets"""
     for bucket in s3.buckets.all():
         print(bucket)
 
 @cli.command('list-bucket-objects')
 @click.argument('bucket')
 def list_buckets_objects(bucket):
-    "List all objects for a S3 bucket"
+    """List all objects for a S3 bucket"""
     for obj in s3.Bucket(bucket).objects.all():
         print(obj)
 
 @cli.command('setup-bucket')
 @click.argument('bucket')
 def setup_bucket(bucket):
-    "Create and configure S3 Bucket"
+    """Create and configure S3 Bucket"""
     s3_bucket = None
     
     try:
