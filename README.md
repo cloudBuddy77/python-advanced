@@ -14,3 +14,4 @@ This will create a new bucket:
     '''python webotron.py setup-bucket <bucket_name>'''
 This will sync a local directory to S3 bucket:
     '''python webotron.py sync <pathname> <bucket_name>'''
+Set AWS profile with --profile optional parameter.
